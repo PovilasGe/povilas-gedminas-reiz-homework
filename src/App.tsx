@@ -99,46 +99,54 @@ function App() {
   }, [currentPageIndex, filteredPagesCount])
   
   if (!loaded) {
-    return <div>Loading...</div>
+    return <div className='error'><h1>Loading...</h1></div>
   }
 
   if (errored) {
-    return <div>Sorry, an error occured. Please try refreshing the page.</div>
+    return <div className='error'><h1>Sorry, an error occured. Please try refreshing the page.</h1></div>
   }
 
   if (countries.length > 0) {
     return (
       <div>
-        <button onClick={toggleSortOrder}>Sort by Name {sortOrder === "desc" ? "A->Z" : "Z->A" }</button>
-        <button onClick={toggleSmallerThanLithuaniaFilteredOut}>Filter out countries smaller than Lithuania</button>
-        <button onClick={toggleOceaniaFilteredOut}>Filter out countries that are from Oceania </button>
+        <div className='wrapper'>
+          <div className='filter_wrapper'>
+            <button className='filter_button button' onClick={toggleSmallerThanLithuaniaFilteredOut}>{smallerThanLithuaniaFilteredOut === false ? "Filter out countries smaller than Lithuania" : 'Remove filtering' }</button>
+            <button className='filter_button button' onClick={toggleOceaniaFilteredOut}>{oceaniaFilteredOut === false ? "Filter out countries from Oceania region" : 'Remove filtering' }</button>
+          </div>
+          <div className='sort_wrapper'>
+            <button className='sort_button button' onClick={toggleSortOrder}>Sort by Name {sortOrder === "desc" ? "A->Z" : "Z->A" }</button>
+          </div>
+        </div>
         <div>
           {filteredCountries
             .slice(startIndex, endIndex)
             .map(country => (
                 <div className='country'>
-                  <div className='name'>Name: {country.name}</div>
-                  <div className='name'>Area: {country.area}</div>
-                  <div className='name'>Region: {country.region}</div>
+                  <div className='name'><span>Name:</span> {country.name}</div>
+                  <div className='name'><span>Area:</span> {country.area}</div>
+                  <div className='name'><span>Region</span>: {country.region}</div>
                 </div>
               ))}
         </div>
-        <div>
-          <button onClick={() => setCurrentPageIndex(currentPageIndex - 1)} disabled={currentPageIndex === 1}>Previous</button>
-          <button onClick={() => setCurrentPageIndex(currentPageIndex + 1)} disabled={endIndex >= filteredCountries.length}>Next</button>
-        </div>
-        <div>
-          {Array.from({length: filteredPagesCount}, (_, i) => i + 1).map(page => (
-            <button onClick={() => setCurrentPageIndex(page)} disabled={page === currentPageIndex}>
-              {page}
-            </button>
-          ))}
+        <div className='page_button_wrapper'>
+          <div className='page_buttons'>
+            <button className='page_button' onClick={() => setCurrentPageIndex(currentPageIndex - 1)} disabled={currentPageIndex === 1}>Previous</button>
+            <button className='page_button' onClick={() => setCurrentPageIndex(currentPageIndex + 1)} disabled={endIndex >= filteredCountries.length}>Next</button>
+          </div>
+          <div className='page_numbers'>
+            {Array.from({length: filteredPagesCount}, (_, i) => i + 1).map(page => (
+              <button className='page_number' onClick={() => setCurrentPageIndex(page)} disabled={page === currentPageIndex}>
+                {page}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     );
   }
 
-  return <div>Sorry, something unexpected occurred. Please try refreshing the page.</div>
+  return <div className='error'><h1>Sorry, something unexpected occurred. Please try refreshing the page.</h1></div>
 }
 
 export default App;

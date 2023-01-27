@@ -1,3 +1,115 @@
+body{
+    background-color:rgba(205, 255, 209, 0.8)
+}
+
+.error {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.error h1 {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+
 .country {
+
+    background-color:rgba(129, 250, 137, 0.8) ;
+    margin: 10px;
+}
+
+.country span {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.country .name {
+margin-bottom: 2px;
+background-color: rgba(191, 192, 191, 0.8);
+max-width: fit-content;
+}
+
+.wrapper{
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.wrapper .filter_wrapper .filter_button{
+    margin-right: 10px;
+}
+
+@media screen and (max-width: 1090px)
+{
+    .wrapper .filter_wrapper .filter_button{
+        margin-bottom: 10px;
+    }
+    
+}
+        
+.wrapper .button{
+        background-color: green;
+        color: white;
+        border-radius: 10px;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        width: 350px; 
+        cursor: pointer;
+}
+
+.page_button_wrapper{
+    margin-left: 10px;
+
+
+}
+
+.page_button_wrapper .page_buttons{
     margin-bottom: 10px;
+    
+}
+
+.page_button_wrapper .page_buttons .page_button{
+    background-color: green;
+    color: white;
+    border-radius: 10px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 100px; 
+    cursor: pointer;
+    margin-right: 10px;
+}
+.page_button_wrapper .page_buttons .page_button:disabled{
+    background-color: grey;
+
+}
+
+.page_button_wrapper .page_number{
+    padding-left: 2px;
+
+}
+
+.page_button_wrapper .page_numbers .page_number{
+    background-color: green;
+    color: white;
+    border-radius: 10px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    cursor: pointer;
+    margin-left: 2px;
+    margin-bottom: 2px;
+    width: 55px;
+}
+
+.page_button_wrapper .page_numbers .page_number:disabled{
+    background-color: grey;
 }
